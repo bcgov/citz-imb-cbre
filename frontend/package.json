@@ -1,0 +1,20 @@
+{
+  "name": "frontend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bcgov/citz-imb-cbre-incident_reporting.git"
+  },
+  "author": "",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/bcgov/citz-imb-cbre-incident_reporting/issues"
+  },
+  "homepage": "https://github.com/bcgov/citz-imb-cbre-incident_reporting#readme"
+}

@@ -18,7 +18,8 @@
   },
   "homepage": "https://github.com/bcgov/citz-imb-cbre-incident_reporting#readme",
   "workspaces": [
-    "backend"
+    "backend",
+    "frontend"
   ],
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.50.0",
@@ -28,6 +29,7 @@
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-n": "^15.6.1",
     "eslint-plugin-promise": "^6.1.1",
+    "eslint-config-react": "^1.1.7",
     "husky": "^8.0.3",
     "lint-staged": "^13.1.0",
     "prettier": "^2.8.3",
@@ -36,5 +38,8 @@
   "lint-staged": {
     "*.js": "eslint --cache --fix",
     "*.{js,css,md}": "prettier --write"
+  },
+  "dependencies": {
+
   }
 }
