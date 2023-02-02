@@ -4,7 +4,8 @@
   "description": "Manages incidents reported to RPD",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,24 @@
   "bugs": {
     "url": "https://github.com/bcgov/citz-imb-cbre-incident_reporting/issues"
   },
-  "homepage": "https://github.com/bcgov/citz-imb-cbre-incident_reporting#readme"
+  "homepage": "https://github.com/bcgov/citz-imb-cbre-incident_reporting#readme",
+  "workspaces": [
+    "backend"
+  ],
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.50.0",
+    "eslint": "^8.33.0",
+    "eslint-config-standard-with-typescript": "^34.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-n": "^15.6.1",
+    "eslint-plugin-promise": "^6.1.1",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.1.0",
+    "prettier": "^2.8.3",
+    "typescript": "^4.9.5"
+  },
+  "lint-staged": {
+    "*.js": "eslint --cache --fix",
+    "*.{js,css,md}": "prettier --write"
+  }
 }
