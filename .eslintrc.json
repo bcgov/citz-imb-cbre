@@ -4,7 +4,7 @@
         "browser": true,
         "es2021": true,
         "node": true
-    //     "jest": true
+        //     "jest": true
     },
     "extends": [
         "plugin:@typescript-eslint/recommended",
@@ -19,7 +19,5 @@
         "ecmaVersion": "latest",
         "sourceType": "module"
     },
-    "rules": {
-        "no-unused-vars": "error"
-    }
+    "rules": {}
 }
