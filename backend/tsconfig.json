@@ -1,4 +1,6 @@
 {
   "extends": "./tsconfig.base.json",
-  "outDir": "dist",                                   /* Specify an output folder for all emitted files. */
+  "compilerOptions": {
+    "outDir": "./dist",
+  },
 }
