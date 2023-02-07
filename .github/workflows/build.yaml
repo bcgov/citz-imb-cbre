@@ -1,0 +1,22 @@
+name: DEV Build and Deploy CBRE Incident Reporting Tool
+
+on:
+  pull_request:
+  workflow_dispatch:
+    branches: [main]
+  push:
+    branches: [cicd-pipeline]
+
+concurrency:
+  group: citz-imb-cbre-incident_reporting-CICD
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check-out Repo
+        uses: actions/checkout@v2
+
+      
