@@ -12,5 +12,5 @@
   "watch": [
     "src"
   ],
-  "exec": "npx ts-node-dev src/server.ts"
+  "exec": "npx ts-node-dev src/index.ts"
 }
