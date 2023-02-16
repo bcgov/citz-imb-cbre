@@ -1,17 +1,12 @@
-import express, { Request, Response } from 'express';
+import express from 'express';
+import { routes } from './routes';
 
 export const createServer = () => {
   const app = express();
 
   app.use(express.json());
 
-  const router = express.Router();
-
-  router.get('/', (req: Request, res: Response) => {
-    res.status(200).end();
-  });
-
-  app.use('/api/v1', router)
+  routes(app);
 
   return app;
 }

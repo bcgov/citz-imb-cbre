@@ -2,11 +2,11 @@ FROM node:18.14.0 as build
 
 WORKDIR /home/app
 
-COPY ./package*.json /home/app
+COPY package*.json ./
 
 RUN npm install
 
-COPY . .
+COPY ./src .
 
 # RUN npm run build
 
@@ -20,4 +20,6 @@ USER node
 
 COPY --from=build /home/app/dist/src /home/app
 
-CMD [ "node", "server.js" ]
+EXPOSE 3000
+
+CMD [ "node", "index.js" ]
