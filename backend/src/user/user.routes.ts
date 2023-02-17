@@ -5,4 +5,4 @@ import { createUserSchema } from './create'
 
 export const userRouter = Router()
 
-userRouter.post('/create', validateResource(createUserSchema), createUserHandler)
+userRouter.post('/', validateResource(createUserSchema), createUserHandler)
