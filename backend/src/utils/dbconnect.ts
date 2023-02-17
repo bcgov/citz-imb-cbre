@@ -1,6 +1,6 @@
-import { getErrorMessage } from "../helpers";
 import mongoose from "mongoose";
 import { logger } from "./logger";
+import { getErrorMessage } from "./getErrorMessage";
 
 export const dbConnect = async () => {
   const dbURI: string = process.env.dbURI as string;

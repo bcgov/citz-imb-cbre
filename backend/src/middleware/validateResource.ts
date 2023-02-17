@@ -1,8 +1,8 @@
-import { getErrorMessage } from '../helpers';
+import { getErrorMessage, logger } from '../utils';
 import { Request, Response, NextFunction } from 'express';
 import { AnyZodObject } from 'zod';
 
-export const validate = (schema: AnyZodObject) => (req: Request, res: Response, next: NextFunction) => {
+export const validateResource = (schema: AnyZodObject) => (req: Request, res: Response, next: NextFunction) => {
   try {
     schema.parse({
       body: req.body,
@@ -11,6 +11,6 @@ export const validate = (schema: AnyZodObject) => (req: Request, res: Response, 
     })
     next();
   } catch (error) {
-    return res.status(400).json({ message: getErrorMessage(error) });
+    return res.status(400).send(getErrorMessage(error));
   }
 }

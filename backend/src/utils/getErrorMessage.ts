@@ -1,3 +1,5 @@
+import { ZodError } from 'zod';
+
 type ErrorWithMessage = { message: string };
 
 export const getErrorMessage = (error: unknown) => {
@@ -5,6 +7,8 @@ export const getErrorMessage = (error: unknown) => {
 }
 
 const toErrorWithMessage = (maybeError: unknown): ErrorWithMessage => {
+
+  if (isZodError(maybeError)) return { message: maybeError.issues.map(issue => issue.message).join('\n') };
 
   if (isErrorWithMessage(maybeError)) return maybeError;
 
@@ -22,5 +26,14 @@ const isErrorWithMessage = (error: unknown): error is ErrorWithMessage => {
     error !== null &&
     'message' in error &&
     typeof (error as Record<string, unknown>).message === 'string'
+  )
+}
+
+const isZodError = (error: unknown): error is ZodError => {
+  return (
+    typeof error === 'object' &&
+    error !== null &&
+    'issues' in error &&
+    Array.isArray((error as Record<string, unknown>).issues)
   )
 }

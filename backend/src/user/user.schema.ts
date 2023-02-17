@@ -1,15 +1,42 @@
-import { object, string, TypeOf } from 'zod'
+import { CallbackError, Schema } from 'mongoose'
+import bcrypt from 'bcrypt'
+import { UserDocument } from './user.type'
 
-export const createUserSchema = object({
-  body: object({
-    name: string({ required_error: 'Name is required' }),
-    password: string({ required_error: 'Password is required' }).min(6, { message: 'Password must be at least 6 characters' }),
-    passwordConfirmation: string({ required_error: 'Password confirmation is required' }).min(6, { message: 'Password confirmation must be at least 6 characters' }),
-    email: string({ required_error: 'Email is required' }).email({ message: 'Email must be a valid email' }),
-  }).refine((data) => data.password === data.passwordConfirmation, {
-    message: 'Passwords must match',
-    path: ['passwordConfirmation'],
-  }),
+export const userSchema = new Schema({
+  name: {
+    type: String,
+    required: true,
+  },
+  email: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  password: {
+    type: String,
+    required: true,
+  },
+}, {
+  timestamps: true,
 })
 
-export type CreateUserInput = Omit<TypeOf<typeof createUserSchema>, 'body.passwordConfirmation'>
+userSchema.pre('save', async function (next) {
+  const user = this as UserDocument
+
+  if (!user.isModified('password')) return next()
+
+  try {
+    const saltfactor = Number(process.env.saltWorkFactor) || 10
+    const salt = await bcrypt.genSalt(saltfactor)
+    const hashedPassword = await bcrypt.hash(user.password, salt)
+    user.password = hashedPassword
+    next()
+  } catch (error) {
+    next(error as CallbackError)
+  }
+})
+
+userSchema.methods.comparePassword = async function (candidatePassword: string): Promise<boolean> {
+  const user = this as UserDocument
+  return bcrypt.compare(candidatePassword, user.password).catch((e) => false)
+}
