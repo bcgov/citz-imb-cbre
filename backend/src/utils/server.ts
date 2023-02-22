@@ -1,17 +1,14 @@
 import express, { Request, Response } from 'express';
+import { router } from './routes.v1';
 
-export const createServer = () => {
+export const createServer = (apiVersion: string = 'v1') => {
   const app = express();
 
   app.use(express.json());
 
-  const router = express.Router();
+  app.get('/healthcheck', (req: Request, res: Response) => res.sendStatus(200));
 
-  router.get('/', (req: Request, res: Response) => {
-    res.status(200).end();
-  });
-
-  app.use('/api/v1', router)
+  app.use(`/api/${apiVersion}`, router)
 
   return app;
 }

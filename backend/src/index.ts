@@ -1,7 +1,14 @@
-import { createServer } from './utils/server';
+import * as dotenv from 'dotenv';
+dotenv.config();
 
-const app = createServer();
+const { PORT, API_VERSION } = process.env;
 
-app.listen(3000, () => {
-  console.log('Server listening on port 3000');
+import { createServer, logger, dbConnect } from './utils';
+
+const app = createServer(API_VERSION);
+
+app.listen(PORT, async () => {
+  logger.info(`Server listening on port ${PORT}`);
+
+  dbConnect();
 });
