@@ -4,6 +4,8 @@
   "description": "Manages incidents reported to RPD",
   "main": "index.js",
   "scripts": {
+    "dev:down": "docker compose -f ./docker/docker-compose.dev.yml down",
+    "dev": "docker compose -f ./docker/docker-compose.dev.yml up -d",
     "test": "npm run test -ws",
     "lint": "eslint --ext .js,.ts,.tsx .",
     "lint:fix": "eslint --ext .js,.ts,.tsx . --fix"
