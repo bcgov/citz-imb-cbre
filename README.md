@@ -14,6 +14,7 @@ The container will have all necessary extensions and environments needed to work
 the npm packages will be installed with clean install so that your node_modules will be up to date.
 
 ### running the applications
+
 ```node
 npm run dev
 ```
