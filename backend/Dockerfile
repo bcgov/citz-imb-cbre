@@ -17,7 +17,7 @@ RUN npm run test
 RUN npm run build
 
 
-FROM node:18.15.0
+FROM node:18.15.0-alpine3.17
 
 WORKDIR /app
 
