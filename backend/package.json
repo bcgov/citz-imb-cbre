@@ -4,7 +4,8 @@
   "description": "API Server",
   "main": "index.js",
   "scripts": {
-    "test": "jest --watchAll",
+    "test": "jest",
+    "test:watch": "jest --watchAll",
     "start": "node dist/src/index.js",
     "build": "tsc",
     "dev": "nodemon -e js,ts"
