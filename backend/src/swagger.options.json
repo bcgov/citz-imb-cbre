@@ -1,0 +1,13 @@
+{
+  "definition": {
+    "openapi": "3.0.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "CBRE Incident Reporting API",
+      "description": "CRUD operations for incidents"
+    }
+  },
+  "apis": [
+    "./backend/src/utils/routes.v1.ts"
+  ]
+}
