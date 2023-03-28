@@ -25,7 +25,8 @@
 				"vscode-icons-team.vscode-icons",
 				"aaron-bond.better-comments",
 				"MS-vsliveshare.vsliveshare",
-				"formulahendry.auto-rename-tag"
+				"formulahendry.auto-rename-tag",
+				"ritwickdey.LiveServer"
 			]
 		}
 	}

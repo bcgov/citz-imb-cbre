@@ -12,6 +12,7 @@
     ],
     "plugins": [
         "@typescript-eslint",
+        "eslint-plugin-tsdoc",
         "prettier" // * prettier should be the last plugin
     ],
     "parser": "@typescript-eslint/parser",
@@ -19,5 +20,7 @@
         "ecmaVersion": "latest",
         "sourceType": "module"
     },
-    "rules": {}
+    "rules": {
+        "tsdoc/syntax": "warn"
+    }
 }
